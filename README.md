@@ -1,12 +1,44 @@
-# React + Vite
+🍽️ Food Ordering App
+This is a Food Ordering App built as part of the Namaste React course by Akshay Saini. The app showcases a real-world implementation of core React concepts like component-based architecture, state management, dynamic routing, and data fetching.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Features
+Browse a list of restaurants (mock or real API)
 
-Currently, two official plugins are available:
+View detailed menus for individual restaurants
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Add items to your cart
 
-## Expanding the ESLint configuration
+Increase or decrease quantity of items in cart
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Remove items from the cart
+
+Checkout cart summary
+
+React Router for navigation between pages
+
+Lazy loading for performance optimization
+
+Shimmer UI while data is loading
+
+🛠️ Tech Stack
+React (with functional components and hooks)
+
+React Router DOM for routing
+
+Tailwind CSS for styling
+
+Parcel or Vite as the bundler (depending on your setup)
+
+Mock API / Swiggy API (depending on the course progress)
+
+📂 Project Structure
+bash
+Copy
+Edit
+src/
+├── components/         # Reusable UI components
+├── pages/              # Page-level components (Home, Cart, Restaurant Menu)
+├── utils/              # Utility functions and constants
+├── assets/             # Static assets like images or logos
+├── App.js              # Main app layout and routing
+└── index.js            # Entry point
