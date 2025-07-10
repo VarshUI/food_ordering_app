@@ -1,4 +1,4 @@
-🍽️ Food Ordering App
+#🍽️_Food_Ordering_App
 This is a Food Ordering App built as part of the Namaste React course by Akshay Saini. The app showcases a real-world implementation of core React concepts like component-based architecture, state management, dynamic routing, and data fetching.
 
 🚀 Features
