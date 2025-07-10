@@ -1,7 +1,7 @@
-#🍽️_Food_Ordering_App
+**🍽️ Food Ordering App**
 This is a Food Ordering App built as part of the Namaste React course by Akshay Saini. The app showcases a real-world implementation of core React concepts like component-based architecture, state management, dynamic routing, and data fetching.
 
-🚀 Features
+**🚀 Features**
 Browse a list of restaurants (mock or real API)
 
 View detailed menus for individual restaurants
@@ -20,7 +20,7 @@ Lazy loading for performance optimization
 
 Shimmer UI while data is loading
 
-🛠️ Tech Stack
+**🛠️ Tech Stack**
 React (with functional components and hooks)
 
 React Router DOM for routing
@@ -31,14 +31,19 @@ Parcel or Vite as the bundler (depending on your setup)
 
 Mock API / Swiggy API (depending on the course progress)
 
-📂 Project Structure
-bash
-Copy
-Edit
-src/
-├── components/         # Reusable UI components
-├── pages/              # Page-level components (Home, Cart, Restaurant Menu)
-├── utils/              # Utility functions and constants
-├── assets/             # Static assets like images or logos
-├── App.js              # Main app layout and routing
-└── index.js            # Entry point
+**📂 Project Structure**
+food_ordering_app/
+├── node_modules/
+├── public/
+├── src/
+│ ├── assets/ # Static assets like images
+│ ├── components/ # Reusable React components
+│ ├── main.css # Global CSS (Tailwind or custom)
+│ └── main.jsx # Entry point for React (with root render logic)
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+├── README.md
+└── vite.config.js
