@@ -1,0 +1,82 @@
+/* Body container */
+.body-container {
+  padding: 20px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Buttons section (search + filter) */
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+/* Filter Button */
+.filter-btn {
+  background-color: #0ea5e9; /* sky blue */
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: #0369a1;
+}
+
+/* Search input and button */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search input {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  width: 220px;
+  font-size: 0.95rem;
+}
+
+.search-btn {
+  background-color: #10b981; /* emerald green */
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #047857;
+}
+
+/* Restaurant cards grid */
+.res-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Error Message */
+.res-container p {
+  grid-column: 1 / -1;
+  color: #ef4444;
+  background-color: #fee2e2;
+  padding: 12px;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
