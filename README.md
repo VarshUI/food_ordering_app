@@ -1,6 +1,6 @@
 # 🍕 Foods
 
-**Foods** is a modern React-based food ordering app that displays restaurants in **Koramangala, Bangalore**. Users can browse restaurant menus, place orders, and complete the checkout process — all within a smooth, single-page experience.
+**Foods** is a modern React-based food ordering app that displays restaurants in **Koramangala, Bangalore** with realtime Swiggy-API. Users can browse restaurant menus, place orders, and complete the checkout process — all within a smooth, single-page experience.
 
 Built using React Hooks, `react-router-dom` for client-side routing, and styled with the utility-first framework **Tailwind CSS**.
 
