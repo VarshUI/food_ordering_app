@@ -1,66 +1,61 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import { RESTAURANT_MENU_API, RESTAURANT_MENU_IMG } from "../utils/constants";
+import { RESTAURANT_MENU_IMG } from "../utils/constants";
 import { useParams } from "react-router";
+import useRestaurantMenu from "../utils/useRestaurantMenu"; // Update the path according to your file structure
+
 import "../css/menu.css";
 
 const RestaurantMenu = () => {
+    const { resId } = useParams();
+    const resData = useRestaurantMenu(resId);
     const [resInfo, setResInfo] = useState(null);
     const [resMenu, setResMenu] = useState([]);
-    const { resId } = useParams();
 
     useEffect(() => {
-        const fetchRestaurantMenu = async () => {
-            try {
-                const response = await fetch(RESTAURANT_MENU_API + resId);
-                if (!response.ok) throw new Error("Failed to fetch restaurant menu");
-                const json = await response.json();
+        if (resData) {
+            // Extract restaurant info
+            const restaurantInfo = resData?.cards?.find((obj) =>
+                obj?.card?.card["@type"]?.includes("food.v2.Restaurant")
+            )?.card?.card?.info;
 
-                const restaurantInfo = json?.data?.cards?.find((obj) =>
-                    obj?.card?.card["@type"]?.includes("food.v2.Restaurant")
-                )?.card?.card?.info;
+            // Extract menu data
+            const menuData = resData?.cards
+                ?.find((obj) => obj?.groupedCard)
+                ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+                    (obj) =>
+                        obj?.card?.card["@type"]?.includes("ItemCategory") ||
+                        obj?.card?.card["@type"]?.includes("NestedItemCategory")
+                );
 
-                const menuData = json?.data?.cards
-                    ?.find((obj) => obj?.groupedCard)
-                    ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
-                        (obj) =>
-                            obj?.card?.card["@type"]?.includes("ItemCategory") ||
-                            obj?.card?.card["@type"]?.includes("NestedItemCategory")
-                    );
+            const organisedMenuData = menuData?.map((obj) => {
+                const type = obj?.card?.card["@type"];
+                const title = obj?.card?.card?.title;
+                const itemCards = obj?.card?.card?.itemCards;
+                const categories = obj?.card?.card?.categories;
 
-                const organisedMenuData = menuData?.map((obj) => {
-                    const type = obj?.card?.card["@type"];
-                    const title = obj?.card?.card?.title;
-                    const itemCards = obj?.card?.card?.itemCards;
-                    const categories = obj?.card?.card?.categories;
+                if (type?.includes("Nested")) {
+                    return {
+                        title,
+                        type: "nested",
+                        categories: categories?.map((subcategory) => ({
+                            title: subcategory?.title,
+                            itemCards: subcategory?.itemCards
+                        }))
+                    };
+                } else {
+                    return {
+                        title,
+                        type: "item",
+                        itemCards
+                    };
+                }
+            });
 
-                    if (type?.includes("Nested")) {
-                        return {
-                            title,
-                            type: "nested",
-                            categories: categories?.map((subcategory) => ({
-                                title: subcategory?.title,
-                                itemCards: subcategory?.itemCards
-                            }))
-                        };
-                    } else {
-                        return {
-                            title,
-                            type: "item",
-                            itemCards
-                        };
-                    }
-                });
-
-                setResInfo(restaurantInfo);
-                setResMenu(organisedMenuData);
-            } catch (err) {
-                console.error(err.message);
-            }
-        };
-
-        fetchRestaurantMenu();
-    }, []);
+            setResInfo(restaurantInfo);
+            setResMenu(organisedMenuData);
+        }
+    }, [resData]);
 
     if (resInfo === null) return <Shimmer />;
 
