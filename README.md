@@ -30,7 +30,7 @@ Built using React Hooks, `react-router-dom` for client-side routing, and styled 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/foods.git
-cd foods
+git clone https://github.com/yourusername/food_ordering_app.git
+cd food_ordering_app
 
 
